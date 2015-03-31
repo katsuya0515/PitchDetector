@@ -25,7 +25,9 @@ class ofApp : public ofBaseApp{
     void audioReceived 	(float * input, int bufferSize, int nChannels);
     int maximumValue(float *array, int length);
     
-    string getPitchSound(int pitch);
+    ofSoundStream soundStream;
+    
+    string getPitchSound(int pitch);// Not developed. Work in Progress 2015/03/31
 
 
     float * left;
@@ -36,18 +38,25 @@ class ofApp : public ofBaseApp{
     float magnitude[BUFFER_SIZE];
     float phase[BUFFER_SIZE];
     float power[BUFFER_SIZE];
-    vector <float> volHistory;
-    float scaled;
+    vector <float> volHistory1;
+    vector <float> volHistory2;
+    
+    float scaled1;
+    float scaled2;
     
     float freq[NUM_WINDOWS][BUFFER_SIZE/2];
-
     float freq_phase[NUM_WINDOWS][BUFFER_SIZE/2];
 
-    aubioAnalyzer AA;
-    ofTrueTypeFont dinFont;
-    ofTrueTypeFont deviceFont;
-    ofTrueTypeFont titleFont;
+    aubioAnalyzer AA1;
+    aubioAnalyzer AA2;
+    
+    
+    ofTrueTypeFont smallFont;
+    ofTrueTypeFont midFont;
+    ofTrueTypeFont largeFont;
     
     ofFile file;
+    int startTime;
+    int elapsedTime;
 
 };
